@@ -24,7 +24,92 @@
         font-size: 18px;  /* 이 부분만 크기를 키웠습니다 */
         color: #f0f0f0;
     }
-</style>
+    .education-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+    
+    .date {
+      margin-left: auto;
+      white-space: nowrap;
+    }
+
+  /* 프로젝트 카드 부분 */
+    .project-content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    gap: 20px;
+  }
+
+  .project-content .image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain; /* 이미지 비율 유지 */
+  }
+
+  .project-content .content {
+    padding: 0 20px;
+  }
+
+  .modal-card {
+    width: 80vw; /* 뷰포트 너비의 80% */
+    max-width: 960px; /* 최대 너비 설정 */
+    height: 90vh; /* 뷰포트 높이의 90% */
+    max-height: 90vh; /* 최대 높이 설정 */
+  }
+
+  .modal-card-body {
+    max-height: calc(90vh - 120px); /* 헤더와 푸터 높이를 고려하여 조정 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 표시 */
+  }
+
+  /* 반응형 스타일 */
+  @media screen and (max-width: 768px) {
+    .modal-card {
+      width: 95vw;
+      height: 95vh;
+    }
+  }
+
+  .poster-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    height: 50vh;  /* 뷰포트 높이의 50%를 차지하도록 설정 */
+  }
+  .poster-pdf {
+    flex: 1;
+    margin-right: 20px;
+    height: 100%;  /* 컨테이너의 전체 높이를 사용 */
+  }
+  .poster-description {
+    flex: 1;
+    overflow-y: auto;  /* 내용이 넘치면 스크롤 가능하도록 */
+    height: 100%;  /* 컨테이너의 전체 높이를 사용 */
+  }
+  .poster-pdf iframe {
+    width: 100%;
+    height: 100%;  /* PDF가 컨테이너를 꽉 채우도록 */
+    border: none;
+  }
+  
+  @media (max-width: 768px) {
+    .poster-container {
+      flex-direction: column;
+      height: auto;  /* 모바일에서는 자동 높이 */
+    }
+    .poster-pdf {
+      margin-right: 0;
+      margin-bottom: 20px;
+      height: 50vh;  /* 모바일에서 포스터 높이를 뷰포트의 50%로 */
+    }
+    .poster-description {
+      height: auto;  /* 설명 부분은 내용에 맞게 자동 조절 */
+    }
+  }
+  </style>
 </head>
 
 <body>
@@ -126,22 +211,51 @@
       <hr />
       <div class="card">
         <div class="card-content">
-          <div class="content">
-            <p class="title is-4">SEJONG UNIVERSITY</p>
-            <p class="subtitle is-6">Korean Language and Literature (Previous majors) - <time datetime="2019-3">2019.03</time> - <time
-                datetime="2021-9">2020.03</time></p>
-            <p class="subtitle is-6">Military service - <time datetime="2019-3">2020.03</time> - <time
-                  datetime="2021-9">2021.09</time></p>
-            <p class="subtitle is-6">Data Science - <time datetime="2019-3">2021.09</time> - <time
-                datetime="2021-9">2025.02</time></p>
-                
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="img/sejong-logo.svg" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">Sejong University</p>
+            </div>
           </div>
           <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris.
+            <p class="subtitle is-6 education-item">
+              <span>Korean Language and Literature (Previous majors)</span>
+              <span class="date">2019.03 - 2020.03</span> 
+            </p>
+            <p class="subtitle is-6 education-item">
+              <span>Leave of absence for mandatory military service</span>
+              <span class="date">2020.03 - 2021.09</span>
+          </p>
+          <p class="subtitle is-6 education-item">
+              <span>Bachelor of Science in Data Science</span>
+              <span class="date">2021.09 - 2025.02</span>
+          </p>
+          <p class="subtitle is-6 education-item">
+            <span= class = "date">(Expected to graduate)</span>
+          </p>
+          </div>
+          <div class="content">
+          </div>
+        </div>
+      </div>
+      <div class="card card-gap">
+        <div class="card-content">
+          <div class="content">
+            <p class="title is-4">SAI (Artificial Intelligence Academic Club) </p>
+              <p class="subtitle is-6"><time datetime="2015-9">2022.03</time> ~ <time
+                datetime="2015-9">current</time></p>
+          </div>
+          <div class="content">
+            Academic clubs on campus
             <ul>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+              <li>Participated in weekly presentations and discussions on ML/NLP research papers.</li>
+              <li>Conducted semester-long projects related to study topics, presenting findings at end-of-term symposiums.</li>
+              <li>Explored cutting-edge technologies and expanded knowledge beyond regular coursework.</li>
+              <li>Collaborated with peers to organize and participate in knowledge-sharing sessions</li>
             </ul>
           </div>
         </div>
@@ -150,11 +264,11 @@
         <div class="card-content">
           <div class="content">
             <p class="title is-4">Seoul National University AI Bootcamp</p>
-            <p class="subtitle is-6">Machine Learning/CV/NLP - <time datetime="2015-9">2022.07</time> - <time
+            <p class="subtitle is-6"><time datetime="2015-9">2022.06</time> - <time
                 datetime="2015-9">2022.08</time></p>
           </div>
           <div class="content">
-            Machine learning and deep learning training with computer vision and natural language processing.
+            ML and DL training with computer vision and natural language processing.
             <ul>
               <li>Project using Yolo and BERT to recognize facial expressions and analyze emotions.</li>
             </ul>
@@ -177,7 +291,7 @@
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4">ETRI(Electronics and Telecommunications Research Institute) </p>
+              <p class="title is-4">ETRI (Electronics and Telecommunications Research Institute) </p>
               <p class="subtitle is-6">Language Intelligence Lab - Research Intern <time datetime="2018-1">2023.06</time> - <time
                   datetime="2019-9">2023.08</time> </p>
             </div>
@@ -209,6 +323,7 @@
               <article class="tile is-child notification">
                 <p class="title">SejongMate</p>
                 <p class="subtitle is-6">2023.03~2023.06</p>
+                <p class="subtitle is-6">Developing a University Chatbot with an LLM</p>
                 <figure class="image is-3by2">
                   <img class="modal-trigger" data-target="project-1-modal" src="img/sejongmate-logo.png">
                 </figure>
@@ -217,7 +332,7 @@
             <div class="tile is-parent">
               <article class="tile is-child notification">
                 <p class="title">HonestLLM</p>
-                <p class="subtitle is-6">2023.06~2023.12</p>
+                <p class="subtitle is-6">2023.10~2023.12</p>
                 <figure class="image is-4by3">
                   <img class="modal-trigger" data-target="project-2-modal" src="img/HonestLLM-logo.png">
                 </figure>
@@ -235,6 +350,7 @@
           </div>
         </div>
       </div>
+      <p class="subtitle">Click the image for a detailed description</p>
     </div>
   </section>
 
@@ -317,40 +433,161 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p class="modal-card-title">Project title</p>
+        <p class="modal-card-title">SejongMate</p>
         <button class="delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
+        <div class="project-content">
 
-        <div id="project-1-modal-carousel" class="carousel">
-          <figure class="image is-4by3 carousel-cell">
-            <img src="img/carousel/1.png">
-          </figure>
-          <figure class="image is-4by3 carousel-cell">
-            <img src="img/carousel/2.png">
-          </figure>
-          <figure class="image is-4by3 carousel-cell">
-            <img src="img/carousel/3.png">
-          </figure>
-        </div>
-
-        <div class="content">
-
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat.</p>
-
-          <div class="tags">
-            <span class="tag">angular</span>
-            <span class="tag">mongo</span>
-            <span class="tag">typscript</span>
-            <span class="tag">node</span>
+          <p class="title">Main Poster</p>
+          <div class="poster-container">
+            <div class="poster-pdf">
+              <iframe src="img/sejongmate-poster.pdf#toolbar=0&navpanes=0&scrollbar=0" width="300" height="200"></iframe>
+            </div>
           </div>
 
-        </div>
+          <div class="content">
+            <p>This project is a chatbot from Sejong University that utilizes a large language model. 
+              The project won second place in the 2023 on-campus Software creative design contest. 
+              I'll detail my main role below.
+            </p>
+          </div>
+          <hr/>
+          <p class="title">My Work</p>
+          <p class="subtitle">1. Collect, Cleanse, and Augment Data</p>
+          <figure class="image is-4by2">
+            <img src="img/sejongmate-data-1.png">
+          </figure>
+          <div class="content">
+              <strong>주요 업무</strong>
+              <li>다양한 소스(학교 커뮤니티, 학사 내규, 위키피디아)에서 데이터를 수집하고 전처리하는 과정을 주도했습니다.</li>
+              <li>크롤링, 데이터 정제, 증강 등의 과정을 포함한 데이터 파이프라인을 설계하고 구현했습니다.</li>
+              <li>데이터 증강, 랜덤 문장 순서 변환, 랜덤 문장 제거 등의 기법을 적용하여 데이터의 다양성과 품질을 개선했습니다.</li>
+              <li>QA쌍 형태의 구조화된 데이터를 생성하고 DB를 통해 관리했습니다.</li>
+              <br>
+              <strong>핵심 도전 과제들과 해결 논의</strong>
+              <br>
+              <p>과제1. 방대한 크롤링 범위로 인한 핵심 키워드 선정의 어려움</p>
+                <p>초기 데이터 수집 과정에서 사용자의 수요를 파악하고, 
+                 그에 맞는 키워드를 기반으로 데이터를 수집해야 할 필요성을 느꼈습니다. 
+                 저는 학교 커뮤니티의 최근 글들에서 물음표로 끝나는 질문들을 추출해 조사했고, 
+                 추가로 설문조사를 통해 키워드를 찾아냈습니다. 
+                 <br>
+                  찾아낸 키워드들과 내부 회의를 통해 필수적으로 들어가야 하는 키워드를 최종 결정했고, 
+                  이를 통해 학교 커뮤니티, 학사 내규에서 정보를 추출해 데이터를 구축, 증강했습니다.
+                </p>
 
+              <p>과제2. Question-Answer쌍 데이터 생성</p>
+                <p>내부 회의를 통해 챗봇의 핵심 기능을 유저 쿼리와 저희 DB의 가장 유사한 질문과의 유사도를 계산해 
+                  그에 알맞은 답변을 출력하는 것으로 정했습니다. 
+                  이에 따라 Question-Answer 데이터를 생성해야했고 과정은 다음과 같았습니다. 
+                  <ol>
+                  <li>앞서 수집한 문서를 GPT input에 알맞게 chunk단위로 분할</li>
+                  <li>GPT-turbo-3.5 api를 활용해 앞서 수집된 문서에 대한 Question생성</li>
+                  <li>생성된 Question + 문서를 입력으로 신뢰성있는 Answer를 생성</li>
+                  <li>사람이 최종 검수</li>
+                  </ol>
+                  각 과정에는 알맞은 GPT 프롬프트를 직접 작성해 효율을 높였습니다.
+                  <br>
+                </p>
+
+              <p>과제3. 수집된 데이터의 제한된 다양성</p>
+              <p>이론과 달리 실제 사용자는 기대했던 문장과 다른 방식으로 질문을 하는 경우가 많습니다. 
+                예를 들어, 학교 이름을 줄이거나, 과목 이름을 줄이는 방식이 있겠습니다. 
+                저희는 이를 감안해 임의로 유사어/준말에 대해 질문 데이터를 증강했습니다.
+                <br>
+                또 한국어는 어순이 달라져도 의미가 유지되는 경우가 많습니다. 
+                저희는 이를 감안해 문장 내 단어를 랜덤으로 스왑해 데이터를 증강했습니다.
+                <br>
+                최종 증강된 데이터는 수집한 QA에 대해서 약 4만개 입니다.
+              </p>
+                <ol>
+                  <li>GPT 프롬프트를 통해 질문 포맷을 지정해 다양한 질문 유형 생성</li>
+                  <li>유사어/준말 어휘에 대한 증강</li>
+                  <li>랜덤 문장 순서 변환 및 제거를 통한 추가 데이터 다양화</li>
+                </ol>
+          </div>
+          
+          <p class="subtitle">2. Deploying Model</p>
+          <figure class="image is-4by3">
+            <img src="img/sejongmate-architecture.png">
+          </figure>
+          <div class="content">
+            <p>AWS를 활용해 모델 배포 및 백엔드와의 연결 부분 참여, 어려웠던 점, 해결방안 
+
+
+
+            </p>
+          </div>
+          
+          <figure class="image is-4by3">
+            <img src="img/carousel/4.png">
+          </figure>
+          <div class="content">
+            <p>마지막 정리</p>
+          </div>
+        </div>
+        
+        <div class="tags">
+          <span class="tag">python</span>
+          <span class="tag">aws</span>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+        <button class="button is-success">Close</button>
+      </footer>
+    </div>
+  </div>
+
+  <div id="project-2-modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">HonestLLM</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      <section class="modal-card-body">
+        <div class="project-content">
+          <div class="content">
+            <p>This project is a chatbot from Sejong University that utilizes a large language model. 
+              The project won second place in the 2023 on-campus creative design contest.</p>
+          </div>
+
+          <figure class="image is-4by3">
+            <img src="img/carousel/1.png">
+          </figure>
+          <div class="content">
+            <p>Description for the first image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          
+          <figure class="image is-4by3">
+            <img src="img/carousel/2.png">
+          </figure>
+          <div class="content">
+            <p>Description for the second image. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+          
+          <figure class="image is-4by3">
+            <img src="img/carousel/3.png">
+          </figure>
+          <div class="content">
+            <p>Description for the third image. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          
+          <figure class="image is-4by3">
+            <img src="img/carousel/4.png">
+          </figure>
+          <div class="content">
+            <p>Description for the fourth image. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          </div>
+        </div>
+        
+        <div class="tags">
+          <span class="tag">angular</span>
+          <span class="tag">mongo</span>
+          <span class="tag">typescript</span>
+          <span class="tag">node</span>
+        </div>
       </section>
       <footer class="modal-card-foot">
         <button class="button is-success">Close</button>
@@ -493,26 +730,22 @@
         <button class="delete" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
-        <div id="TBL-modal-carousel" class="carousel">
-          <figure class="image is-3by3 carousel-cell">
+        <div class="project-content">
+          <div class="content">
+            <p>Description for the first image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <figure class="image is-4by3">
             <img src="img/TBL/TBL-2.jpg">
           </figure>
-          <figure class="image is-3by3 carousel-cell">
+          <div class="content">
+            <p>Description for the first image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          
+          <figure class="image is-4by3">
             <img src="img/TBL/TBL-1.jpg">
           </figure>
-          <figure class="image is-3by3 carousel-cell">
-            <img src="img/TBL/TBL-3.jpg">
-          </figure>
-        </div>
-
-        <div class="content">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-            commodo
-            consequat.</p>
-        </div>
-
+          <div class="content">
+            <p>Description for the second image. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
       </section>
       <footer class="modal-card-foot">
         <button class="button is-success">Close</button>
