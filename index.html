@@ -120,6 +120,7 @@
       <select id="languageSelect">
           <option value="en">English</option>
           <option value="jp">日本語</option>
+          <option value="kr">한국어</option>
       </select>
       <span class="language-description">You can change the language here!</span>
   </div>
@@ -130,7 +131,11 @@
         const language = this.value;
         if (language === 'jp') {
             window.location.href = 'https://bamboostreet.github.io/portfolio_JPN/'; // 일본어 페이지 URL
-        } else {
+        } 
+        if (language === 'kr') {
+            window.location.href = 'https://bamboostreet.github.io/portfolio_KR/'; // 일본어 페이지 URL
+        }
+        else {
             window.location.href = 'https://bamboostreet.github.io/portfolio'; // 영어(기본) 페이지 URL
         }
     });
